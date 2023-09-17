@@ -35,7 +35,10 @@ export default function App() {
   function handleInput(buttonPressed){
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
     if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ){
-      setCurrentNumber(currentNumber + " " + buttonPressed + " ")
+      if (currentNumber!=='')
+        setCurrentNumber(currentNumber + " " + buttonPressed + " ")
+      else if (currentNumber==='' && buttonPressed==="-")
+        setCurrentNumber(lastNumber+buttonPressed)
       return
     }
     switch(buttonPressed){
@@ -55,6 +58,7 @@ export default function App() {
         setCurrentNumber(currentNumber/100)
         return  
       case '+/-':
+        setCurrentNumber(-1*currentNumber)
         return
     }
 
